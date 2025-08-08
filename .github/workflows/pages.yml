@@ -34,7 +34,19 @@ jobs:
 
       - name: Build web
         # GitHub Pages（プロジェクトページ）配下で動くように base-href を設定（repo名に合わせる）
-        run: flutter build web --release --base-href /shima_kouiki_homepage4/
+        # - PWA 無効化（Service Worker キャッシュによる白画面対策）
+        # - HTML レンダラーを使用（互換性優先）
+        run: |
+          flutter clean
+          flutter pub get
+          flutter build web --release \
+            --base-href /shima_kouiki_homepage4/ \
+            --pwa-strategy=none \
+            --web-renderer html
+
+      - name: Add 404 fallback for SPA
+        # GitHub Pages の SPA でのリロード時 404 を回避
+        run: cp build/web/index.html build/web/404.html
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3

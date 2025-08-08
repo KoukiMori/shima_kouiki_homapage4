@@ -29,15 +29,22 @@ class HomeView extends StatelessWidget {
                     scrollOffset / screenSize.height,
                     1.0,
                   );
-                  return Image.network(
-                    height:
-                        screenSize.height -
+                  // 背景画像をアセットから表示（Webの相対パス問題を避けるため Image.asset を使用）
+                  return Image.asset(
+                    'assets/shima_ago_bay.jpg', // 実在ファイルは .jpg（.png ではない）
+                    height: screenSize.height -
                         (screenSize.height * .2 * offScreenPercentage),
-                    width:
-                        screenSize.width -
+                    width: screenSize.width -
                         (screenSize.width * .5 * offScreenPercentage),
-                    'assets/shima_ago_bay.jpg',
                     fit: BoxFit.cover,
+                    // 読み込み失敗時にプレースホルダーで崩れを防ぐ
+                    errorBuilder: (context, error, stack) => Container(
+                      height: screenSize.height -
+                          (screenSize.height * .2 * offScreenPercentage),
+                      width: screenSize.width -
+                          (screenSize.width * .5 * offScreenPercentage),
+                      color: const Color(0xFFCCE4F7),
+                    ),
                   );
                 },
                 offsetBuilder: (scrollOffset) {

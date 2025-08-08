@@ -33,8 +33,8 @@ jobs:
         run: flutter pub get
 
       - name: Build web
-        # GitHub Pages（プロジェクトページ）配下で動くように base-href を設定
-        run: flutter build web --release --base-href /shima_kouiki_homapage4/
+        # GitHub Pages（プロジェクトページ）配下で動くように base-href を設定（repo名に合わせる）
+        run: flutter build web --release --base-href /shima_kouiki_homepage4/
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3

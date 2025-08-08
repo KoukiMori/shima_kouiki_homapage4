@@ -1,6 +1,6 @@
 # shima_kouiki_homepage4
 
-[![Deploy Flutter Web to GitHub Pages](https://github.com/KoukiMori/shima_kouiki_homapage4/actions/workflows/pages.yml/badge.svg)](https://github.com/KoukiMori/shima_kouiki_homapage4/actions/workflows/pages.yml)
+[![Deploy Flutter Web to GitHub Pages](https://github.com/KoukiMori/shima_kouiki_homepage4/actions/workflows/pages.yml/badge.svg)](https://github.com/KoukiMori/shima_kouiki_homepage4/actions/workflows/pages.yml)
 
 A new Flutter project.
 
@@ -16,4 +16,4 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
-# shima_kouiki_homapage4
+# shima_kouiki_homepage4

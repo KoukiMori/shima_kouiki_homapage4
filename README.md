@@ -1,5 +1,7 @@
 # shima_kouiki_homepage4
 
+[![Deploy Flutter Web to GitHub Pages](https://github.com/KoukiMori/shima_kouiki_homapage4/actions/workflows/pages.yml/badge.svg)](https://github.com/KoukiMori/shima_kouiki_homapage4/actions/workflows/pages.yml)
+
 A new Flutter project.
 
 ## Getting Started

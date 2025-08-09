@@ -47,7 +47,7 @@ class _HomeViewState extends State<HomeView> {
                     scrollOffset / screenSize.height,
                     1.0,
                   );
-                  // 背景画像をアセットから表示（Webの相対パス問題を避けるため Image.asset を使用）
+                  // 背景画像をアセットから表示（以前の挙動に戻す: スクロール量に応じてサイズを縮小）
                   return Image.asset(
                     key: HomeView._topViewKey,
                     'assets/tomoyama_bay.jpg', // 実在ファイルは .jpg（.png ではない）

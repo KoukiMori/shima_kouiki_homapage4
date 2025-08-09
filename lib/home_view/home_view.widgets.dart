@@ -155,7 +155,14 @@ class _OverlayTextSectionState extends State<OverlayTextSection> {
         width: screenSize.width,
         child: Stack(
           children: [
-            _TitleText(text: '1977年', top: 180, fontsSize: 160),
+            // 「1977」の後ろにくる「年」だけ少し小さく表示する
+            _TitleText(
+              text: '1977',
+              smallText: '年',
+              top: 180,
+              fontsSize: 160,
+              smallTextOffsetY: null, // 必要なら微調整値をここで指定
+            ),
             _TitleText(text: '志摩の介護', top: 400, fontsSize: 70),
             _TitleText(text: 'ここから', top: 500, fontsSize: 60),
             _TitleText(text: '始まりました', top: 580, fontsSize: 60),
@@ -175,6 +182,8 @@ class _OverlayTextSectionState extends State<OverlayTextSection> {
                       color: Colors.white,
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
+                      letterSpacing: 1,
+                      height: 1.5,
                       // 背景に溶け込まないよう軽いシャドー
                       shadows: [
                         Shadow(
@@ -197,34 +206,82 @@ class _OverlayTextSectionState extends State<OverlayTextSection> {
 
 class _TitleText extends StatelessWidget {
   final double? top;
-  final String text;
+  final String text; // メインの文字列（例: 1977）
+  final String? smallText; // 後ろに続く小さめ文字（例: 年）
   final double fontsSize;
+  final double? smallTextOffsetY; // 小さい文字の縦位置微調整（下端を揃えるため）
   const _TitleText({
     required this.text,
+    this.smallText,
     this.top,
     required this.fontsSize,
+    this.smallTextOffsetY,
   });
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
       top: top,
-      child: Text(
-        text,
-        style: GoogleFonts.notoSerifJp(
-          fontSize: fontsSize,
-          fontWeight: FontWeight.w900,
-          color: Colors.white,
-          // タイトルを読みやすくするシャドー
-          shadows: [
-            Shadow(
-              color: Colors.black,
-              offset: const Offset(0, 2),
-              blurRadius: 6,
+      child: smallText == null
+          // 単体表示
+          ? Text(
+              text,
+              style: GoogleFonts.notoSerifJp(
+                fontSize: fontsSize,
+                fontWeight: FontWeight.w900,
+                color: Colors.white,
+                shadows: [
+                  Shadow(
+                    color: Colors.black,
+                    offset: const Offset(0, 2),
+                    blurRadius: 6,
+                  ),
+                ],
+              ),
+            )
+          // 「年」だけ小さくしつつ、下端を揃えるために縦位置を微調整
+          : RichText(
+              text: TextSpan(
+                style: GoogleFonts.notoSerifJp(
+                  fontSize: fontsSize,
+                  fontWeight: FontWeight.w900,
+                  color: Colors.white,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black,
+                      offset: const Offset(0, 2),
+                      blurRadius: 6,
+                    ),
+                  ],
+                ),
+                children: [
+                  TextSpan(text: text),
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.baseline,
+                    baseline: TextBaseline.ideographic, // 日本語のベースライン
+                    child: Transform.translate(
+                      // デフォルトでは小さい文字の下端が少し下に出るので上に持ち上げる
+                      offset: Offset(0, smallTextOffsetY ?? -(fontsSize * 0.2)),
+                      child: Text(
+                        smallText!,
+                        style: GoogleFonts.notoSerifJp(
+                          fontSize: fontsSize * 0.7, // 少し小さく
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white,
+                          shadows: [
+                            Shadow(
+                              color: Colors.black,
+                              offset: const Offset(0, 2),
+                              blurRadius: 6,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }

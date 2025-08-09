@@ -1,0 +1,66 @@
+class Topic {
+  final String date;
+  final String content;
+
+  Topic({required this.date, required this.content});
+}
+
+// お知らせデータのリスト
+final List<Topic> topics = [
+  Topic(date: 'R7.6.25', content: '会計年度任用職員の募集（介護職員、看護職員）'),
+  Topic(date: 'R7.6.25', content: '財政状況（令和６年度下半期）を公表しました。'),
+  Topic(date: 'R7.6.25', content: '入札結果について'),
+  Topic(date: 'R7.6.11', content: '会計年度任用職員の募集（介護職員、調理員、看護職員）'),
+  Topic(date: 'R7.5.20', content: '重要事項説明書について'),
+  Topic(date: 'R7.5.12', content: '契約規則に基づく公表（令和7年度契約締結状況）について'),
+  Topic(date: 'R7.4.28', content: '会計年度任用職員の募集（介護職員、調理員、看護職員、栄養士）'),
+  Topic(date: 'R7.4.1', content: '会計年度任用職員の募集（介護職員、調理員、看護職員、栄養士）'),
+  Topic(date: 'R7.4.1', content: '契約規則に基づく公表（令和7年度発注見通し）について'),
+  Topic(date: 'R7.3.14', content: '会計年度任用職員の募集（介護職員、調理員、看護職員、栄養士）'),
+  Topic(date: 'R7.3.13', content: '正規職員（看護職員）の募集'),
+  Topic(date: 'R7.1.20', content: '正規職員募集の受付を終了いたしました。'),
+  Topic(date: '令和7年4月採用', content: '正規職員（看護職員・管理栄養士・介護職員）の募集について（令和７年１月２０日必着）'),
+  Topic(date: 'R6.11.19', content: '会計年度任用職員の募集（介護職員、調理員、看護職員）について'),
+  Topic(date: 'R6.10.21', content: '会計年度任用職員の募集（介護職員、調理員、施設管理人）について'),
+  Topic(date: 'R6.8.1', content: '会計年度任用職員の募集（介護職員、調理員）について'),
+  Topic(date: 'R6.7.25', content: '正規職員募集の受付を終了いたしました。'),
+  Topic(date: 'R6.7.18', content: '労働基準法違反の疑いについて'),
+  Topic(date: 'R6.7.1', content: '正規職員（事務員・介護職員）の募集について（令和６年７月２５日必着）'),
+  Topic(date: 'R6.6.21', content: '労働基準法違反の疑いについて'),
+  Topic(date: 'R6.5.31', content: '正規職員募集の受付を終了いたしました。'),
+  Topic(date: 'R6.5.10', content: '正規職員（看護職員）の募集について（令和６年５月３１日必着）'),
+  Topic(date: 'R6.5.10', content: '会計年度任用職員の募集（事務員、看護職員、介護職員、調理員）について'),
+  Topic(
+      date: 'R6.4.17',
+      content: '令和６年度会計年度任用職員の募集（看護職員、介護職員、調理員、管理栄養士または栄養士）について'),
+  Topic(date: 'R6.4.9', content: '正規職員募集の受付を終了いたしました。'),
+  Topic(date: 'R6.4.2', content: '令和６年度会計年度任用職員の募集（介護職員、調理員、管理栄養士または栄養士）について'),
+  Topic(date: 'R7.6.25', content: '会計年度任用職員の募集（介護職員、看護職員）'),
+  Topic(date: 'R7.6.25', content: '財政状況（令和６年度下半期）を公表しました。'),
+  Topic(date: 'R7.6.25', content: '入札結果について'),
+  Topic(date: 'R7.6.11', content: '会計年度任用職員の募集（介護職員、調理員、看護職員）'),
+  Topic(date: 'R7.5.20', content: '重要事項説明書について'),
+  Topic(date: 'R7.5.12', content: '契約規則に基づく公表（令和7年度契約締結状況）について'),
+  Topic(date: 'R7.4.28', content: '会計年度任用職員の募集（介護職員、調理員、看護職員、栄養士）'),
+  Topic(date: 'R7.4.1', content: '会計年度任用職員の募集（介護職員、調理員、看護職員、栄養士）'),
+  Topic(date: 'R7.4.1', content: '契約規則に基づく公表（令和7年度発注見通し）について'),
+  Topic(date: 'R7.3.14', content: '会計年度任用職員の募集（介護職員、調理員、看護職員、栄養士）'),
+  Topic(date: 'R7.3.13', content: '正規職員（看護職員）の募集'),
+  Topic(date: 'R7.1.20', content: '正規職員募集の受付を終了いたしました。'),
+  Topic(date: '令和7年4月採用', content: '正規職員（看護職員・管理栄養士・介護職員）の募集について（令和７年１月２０日必着）'),
+  Topic(date: 'R6.11.19', content: '会計年度任用職員の募集（介護職員、調理員、看護職員）について'),
+  Topic(date: 'R6.10.21', content: '会計年度任用職員の募集（介護職員、調理員、施設管理人）について'),
+  Topic(date: 'R6.8.1', content: '会計年度任用職員の募集（介護職員、調理員）について'),
+  Topic(date: 'R6.7.25', content: '正規職員募集の受付を終了いたしました。'),
+  Topic(date: 'R6.7.18', content: '労働基準法違反の疑いについて'),
+  Topic(date: 'R6.7.1', content: '正規職員（事務員・介護職員）の募集について（令和６年７月２５日必着）'),
+  Topic(date: 'R6.6.21', content: '労働基準法違反の疑いについて'),
+  Topic(date: 'R6.5.31', content: '正規職員募集の受付を終了いたしました。'),
+  Topic(date: 'R6.5.10', content: '正規職員（看護職員）の募集について（令和６年５月３１日必着）'),
+  Topic(date: 'R6.5.10', content: '会計年度任用職員の募集（事務員、看護職員、介護職員、調理員）について'),
+  Topic(
+      date: 'R6.4.17',
+      content: '令和６年度会計年度任用職員の募集（看護職員、介護職員、調理員、管理栄養士または栄養士）について'),
+  Topic(date: 'R6.4.9', content: '正規職員募集の受付を終了いたしました。'),
+  Topic(date: 'R6.4.2', content: '令和６年度会計年度任用職員の募集（介護職員、調理員、管理栄養士または栄養士）について'),
+];

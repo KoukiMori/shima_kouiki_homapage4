@@ -29,6 +29,9 @@ jobs:
       - name: Flutter version
         run: flutter --version
 
+      - name: Enable web support
+        run: flutter config --enable-web
+
       - name: Install dependencies
         run: flutter pub get
 

@@ -122,52 +122,74 @@ class TopicSection extends StatelessWidget {
   }
 }
 
-class OverlayTextSection extends StatelessWidget {
+class OverlayTextSection extends StatefulWidget {
   const OverlayTextSection({super.key});
+
+  @override
+  State<OverlayTextSection> createState() => _OverlayTextSectionState();
+}
+
+class _OverlayTextSectionState extends State<OverlayTextSection> {
+  double _opacity = 0.0; // フェードイン用の透明度（0.0 = 透明, 1.0 = 不透明）
+
+  @override
+  void initState() {
+    super.initState();
+    // 初回表示時にゆっくりフェードインさせる
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      setState(() => _opacity = 1.0);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    return Container(
-      margin: EdgeInsets.only(left: screenSize.width * .06),
-      height: screenSize.height,
-      width: screenSize.width,
-      child: Stack(
-        children: [
-          _TitleText(text: '1977年', top: 180, fontsSize: 160),
-          _TitleText(text: '志摩の介護', top: 400, fontsSize: 70),
-          _TitleText(text: 'ここから', top: 500, fontsSize: 60),
-          _TitleText(text: '始まりました', top: 580, fontsSize: 60),
-          Positioned(
-            right: screenSize.width * .08,
-            top: 365,
-            child: Container(
-              width: 460,
-              height: 400,
-              decoration: BoxDecoration(
-                color: Colors.grey.withAlpha(100),
-              ),
-              child: Center(
-                child: Text(
-                  '私たちは\n志摩市で最初に設立された\n介護施設として\n地域の皆様と歩んできました\n長年の経験と実績をもとに\nこれからも安心と温もりの\n介護を提供してまいります',
-                  style: GoogleFonts.notoSerifJp(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    // 背景に溶け込まないよう軽いシャドー
-                    shadows: [
-                      Shadow(
-                        color: Colors.black,
-                        offset: const Offset(0, 2),
-                        blurRadius: 6,
-                      ),
-                    ],
+    return AnimatedOpacity(
+      opacity: _opacity,
+      duration: const Duration(milliseconds: 1200), // ゆっくり表示
+      curve: Curves.easeOut,
+      child: Container(
+        margin: EdgeInsets.only(left: screenSize.width * .06),
+        height: screenSize.height,
+        width: screenSize.width,
+        child: Stack(
+          children: [
+            _TitleText(text: '1977年', top: 180, fontsSize: 160),
+            _TitleText(text: '志摩の介護', top: 400, fontsSize: 70),
+            _TitleText(text: 'ここから', top: 500, fontsSize: 60),
+            _TitleText(text: '始まりました', top: 580, fontsSize: 60),
+            Positioned(
+              right: screenSize.width * .08,
+              top: 365,
+              child: Container(
+                width: 460,
+                height: 400,
+                decoration: BoxDecoration(
+                  color: Colors.grey.withAlpha(100),
+                ),
+                child: Center(
+                  child: Text(
+                    '私たちは\n志摩市で最初に設立された\n介護施設として\n地域の皆様と歩んできました\n長年の経験と実績をもとに\nこれからも安心と温もりの\n介護を提供してまいります',
+                    style: GoogleFonts.notoSerifJp(
+                      color: Colors.white,
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      // 背景に溶け込まないよう軽いシャドー
+                      shadows: [
+                        Shadow(
+                          color: Colors.black,
+                          offset: const Offset(0, 2),
+                          blurRadius: 6,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

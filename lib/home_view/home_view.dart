@@ -11,13 +11,26 @@ import 'package:shima_kouiki_homepage4/topic.dart';
 
 part 'home_view.widgets.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
   // 施設紹介セクションへのスクロール用キー（UIは変えず、機能のみ追加）
   static final GlobalKey _facilitiesKey = GlobalKey();
   static final GlobalKey _topViewKey = GlobalKey();
   // OverlayTextSection（1977年テキスト開始位置）へのスクロール用キー
   static final GlobalKey _overlayKey = GlobalKey();
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // 先頭画像を事前読み込みして初回表示の体感を安定させる
+    precacheImage(const AssetImage('assets/tomoyama_bay.jpg'), context);
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -102,7 +115,7 @@ class HomeView extends StatelessWidget {
                   Text(
                     '志摩広域行政組合',
                     style: GoogleFonts.notoSansJp(
-                      fontSize: 40,
+                      fontSize: 32,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                       // 背景と重なるため、読みやすさ向上のためのシャドー
